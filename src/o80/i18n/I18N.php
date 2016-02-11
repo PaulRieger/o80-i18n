@@ -153,16 +153,14 @@ class I18N {
     }    
 
     public function getUserLangs() {
-        $langs = array();
-        /**
-        if ($this->useLangFromGET && isset($_GET) && array_key_exists('lang', $_GET)) {
-            $langs[] = $_GET['lang'];
-        }
-        if (isset($_SESSION) && array_key_exists('lang', $_SESSION)) {
-            $langs[] = $_SESSION['lang'];
-        }
-        $langs = array_merge($langs, $this->getHttpAcceptLanguages());
-        */
+        // $langs = array();
+        // if ($this->useLangFromGET && isset($_GET) && array_key_exists('lang', $_GET)) {
+        //     $langs[] = $_GET['lang'];
+        // }
+        // if (isset($_SESSION) && array_key_exists('lang', $_SESSION)) {
+        //     $langs[] = $_SESSION['lang'];
+        // }
+        // $langs = array_merge($langs, $this->getHttpAcceptLanguages());
         if (!empty($this->defaultLang)) {
             $langs[] = $this->defaultLang;
         }
