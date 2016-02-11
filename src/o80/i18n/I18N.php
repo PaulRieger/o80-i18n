@@ -99,8 +99,11 @@ class I18N {
             function ($number) { // Plural rule 6 (Lithuanian)
                 return $number != 11 && $number % 10 == 1 ? 0 : ($number % 10 == 0 || ($number % 100 >= 11 && $number % 100 <= 19) ? 1 : 2);
             },
-            function ($number) { // Plural rule 7 (Russian)
-                return $number % 10 == 1 && $number != 11 ? 0 : (($number % 10 >= 2 && $number % 10 <= 4) && ($number != 12 && $number != 14) ? 1 : 2);
+            function ($number) {
+                // Plural rule 7 (Russian)
+                $numberMod10 = $number % 10;
+                $numberMod100 = $number % 100;
+                return $number == 1 ? 0 : $numberMod10 >= 2 && $numberMod10 <= 4 && $numberMod100 != 12 && $numberMod100 != 13 && $numberMod100 != 14 ? 1 : 2;
             },
             function ($number) { // Plural rule 8 (Slovak)
                 return $number == 1 ? 0 : ($number >= 2 && $number <= 4 ? 1 : 2);
@@ -151,6 +154,7 @@ class I18N {
 
     public function getUserLangs() {
         $langs = array();
+        /**
         if ($this->useLangFromGET && isset($_GET) && array_key_exists('lang', $_GET)) {
             $langs[] = $_GET['lang'];
         }
@@ -158,6 +162,7 @@ class I18N {
             $langs[] = $_SESSION['lang'];
         }
         $langs = array_merge($langs, $this->getHttpAcceptLanguages());
+        */
         if (!empty($this->defaultLang)) {
             $langs[] = $this->defaultLang;
         }
